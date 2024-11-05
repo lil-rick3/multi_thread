@@ -22,11 +22,11 @@ int main() {
     int num_threads = 5;
     pthread_t threads[num_threads];
     thread_data thread_datas[num_threads];
-    int test = 2
+    int test = 2;
     // Create threads
     for (int i = 0; i < num_threads; i++) {
         thread_datas[i].thread_id = i + 1;
-        thread_datas[i].addess = &test
+        thread_datas[i].addess = &test;
         if (pthread_create(&threads[i], NULL, threadFunction, &thread_datas[i]) != 0) {
             perror("Failed to create thread");
             return 1;
