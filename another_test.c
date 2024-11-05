@@ -2,10 +2,15 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
-
+typedef struct {
+   int  thread_id;
+   int  *address;
+   
+}thread_data;
 // Function to be executed by each thread
 void* threadFunction(void* arg) {
     int thread_id = *(int*)arg;
+    
     printf("Hello from thread %d\n", thread_id);
     sleep(1); // Simulate some work being done
     return NULL;
@@ -14,12 +19,13 @@ void* threadFunction(void* arg) {
 int main() {
     int num_threads = 5;
     pthread_t threads[num_threads];
-    int thread_ids[num_threads];
-
+    thread_data thread_datas[num_threads];
+    int test = 2
     // Create threads
     for (int i = 0; i < num_threads; i++) {
-        thread_ids[i] = i + 1;
-        if (pthread_create(&threads[i], NULL, threadFunction, &thread_ids[i]) != 0) {
+        thread_datas[i].thread_id = i + 1;
+        thread_datas[i].addess = &test
+        if (pthread_create(&threads[i], NULL, threadFunction, &thread_datas[i]) != 0) {
             perror("Failed to create thread");
             return 1;
         }
