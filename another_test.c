@@ -9,10 +9,10 @@ typedef struct {
 }thread_data;
 // Function to be executed by each thread
 void* threadFunction(void* arg) {
-    thread_data* args = (thread_data*)arg
-    *(args->address) *= 2
+    thread_data* args = (thread_data*)arg;
+    *(args->address) *= 2;
     printf("Hello from thread %d\n", args->thread_id);
-    printf("%d\n", *(args->address))
+    printf("%d\n", *(args->address));
 
     sleep(1); // Simulate some work being done
     return NULL;
