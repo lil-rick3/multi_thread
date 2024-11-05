@@ -12,6 +12,7 @@ typedef struct {
 // Function to be executed by each thread
 void* threadFunction(void* arg) {
     int random_number = (rand() % 500) + 1;
+    printf("%d\n", random_number);
     usleep(random_number);
     thread_data* args = (thread_data*)arg;
     *(args->address) *= 2;
