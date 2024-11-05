@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <time.h>
+
 typedef struct {
    int  thread_id;
    int  *address;
@@ -9,6 +11,8 @@ typedef struct {
 }thread_data;
 // Function to be executed by each thread
 void* threadFunction(void* arg) {
+    int random_number = (rand() % 500) + 1;
+    usleep(random_number)
     thread_data* args = (thread_data*)arg;
     *(args->address) *= 2;
     printf("Hello from thread %d\n", args->thread_id);
@@ -19,6 +23,7 @@ void* threadFunction(void* arg) {
 }
 
 int main() {
+    srand(time(0));
     int num_threads = 5;
     pthread_t threads[num_threads];
     thread_data thread_datas[num_threads];
